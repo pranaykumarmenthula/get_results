@@ -59,11 +59,9 @@ for y in range(len(semesters)):
                         res_d.append(filtered_data[[str(k) for k in headings_sheet[j]]])
                         break
     
-
-
 if ((len(res_d)>0)):
     res_sem=res_d[0]['Semester']
-    if str(selected_semester) in str(res_sem) :
+    if (str(selected_semester) in str(res_sem)):
         st.write("Student Marks for Selected Branch, Semester, and Roll Number:")
         st.write(res_d[0])
     else:
