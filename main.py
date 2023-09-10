@@ -35,7 +35,7 @@ data=[x for x in idata]
 headings_sheet=[x for x in ihs]
 
 
-branches = [ "Computer Science Engineering","CSE(AIML)","CSE(DS)" ,"CS" ,"CSIT" ,
+branches = [ "Computer Science Engineering","CSE(AIML)","CSE(DS)" ,"CSE(CS)" ,"CSIT" ,
             "Civil Engineering" ,"EEE","Mechanical Engineering" ,
             "Electronics and Communication Engineering" , 
             "Information Technology" , "AERO"]
