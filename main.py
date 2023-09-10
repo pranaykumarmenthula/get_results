@@ -64,7 +64,7 @@ if ((len(res_d)>0)):
     list2 = list(str(selected_semester).split())
     list1.sort()
     list2.sort()
-    if (list1[1]==list2[0]) :
+    if (str(list1[1]) == str(list2[0])) :
         st.write("Student Marks for Selected Branch, Semester, and Roll Number:")
         st.write(res_d[0])
     else:
