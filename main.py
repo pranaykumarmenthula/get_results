@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 
-imdata = ['sem4cse.xlsx','sem4aiml.xlsx','sem4ds.xlsx' ,'sem4cs.xlsx','sem4csit.xlsx' 'sem4ce.xlsx',
+imdata = ['sem4cse.xlsx','sem4aiml.xlsx','sem4ds.xlsx' ,'sem4cs.xlsx','sem4csit.xlsx' ,'sem4ce.xlsx',
           'sem4eee.xlsx' ,'sem4mech.xlsx' ,'sem4ece.xlsx' ,'sem4it.xlsx' ,'sem4aero.xlsx']
 
 idata=[]
