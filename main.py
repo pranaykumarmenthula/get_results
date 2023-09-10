@@ -60,8 +60,7 @@ for y in range(len(semesters)):
                         break
     
 if (len(res_d)>0):
-    res_sem = res_d[0]['Semester']
-    if (str(selected_semester) in str(res_sem)):
+    if (str(selected_semester) in str(res_d[0]['Semester'])) :
         st.write("Student Marks for Selected Branch, Semester, and Roll Number:")
         st.write(res_d[0])
     else:
