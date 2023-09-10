@@ -1,6 +1,16 @@
 import streamlit as st
 import pandas as pd
 
+hide_st_style = """
+            <style>
+            
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 
 imdata = ['sem4cse.xlsx','sem4aiml.xlsx','sem4ds.xlsx' ,'sem4cs.xlsx','sem4csit.xlsx' ,'sem4ce.xlsx',
           'sem4eee.xlsx' ,'sem4mech.xlsx' ,'sem4ece.xlsx' ,'sem4it.xlsx' ,'sem4aero.xlsx']
@@ -60,11 +70,7 @@ for y in range(len(semesters)):
                         break
     
 if ((len(res_d)>0)):
-    list1 = list(str(res_d[0]).split())
-    list2 = list(str(selected_semester).split())
-    list1.sort()
-    list2.sort()
-    if (str(list1[1]) == str(list2[0])) :
+    if (str(selected_semester) in str(res_d[0]['Semester'])) :
         st.write("Student Marks for Selected Branch, Semester, and Roll Number:")
         st.write(res_d[0])
     else:
@@ -80,12 +86,4 @@ st.write(f"You selected: Branch - {selected_branch}, Semester - {selected_semest
 st.caption('Currently works for only :blue[4th Semester] ')
 
 
-hide_st_style = """
-            <style>
-            
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
+
