@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 
 
-imdata = ['E:/Projects/Marks_ST/sem4aiml.xlsx','E:/Projects/Marks_ST/sem4ce.xlsx','E:/Projects/Marks_ST/sem4cse.xlsx','E:/Projects/Marks_ST/sem4ds.xlsx' ,
-          'E:/Projects/Marks_ST/sem4ece.xlsx' ,'E:/Projects/Marks_ST/sem4eee.xlsx' ,'E:/Projects/Marks_ST/sem4it.xlsx' ,'E:/Projects/Marks_ST/sem4mech.xlsx']
+imdata = ['sem4aiml.xlsx','sem4ce.xlsx','sem4cse.xlsx','sem4ds.xlsx' ,
+          'sem4ece.xlsx' ,'sem4eee.xlsx' ,'sem4it.xlsx' ,'sem4mech.xlsx']
 
 idata=[]
 ihs=[]
