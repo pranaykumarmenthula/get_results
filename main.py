@@ -2,9 +2,8 @@ import streamlit as st
 import pandas as pd
 
 
-imdata = ['sem4cse.xlsx','sem4aiml.xlsx','sem4ds.xlsx','sem4cs.xlsx' ,
-          'sem4csit.xlsx' ,'sem4ce.xlsx' ,'sem4eee.xlsx' ,'sem4mech.xlsx', 
-          'sem4ece.xlsx' , 'sem4it.xlsx' , 'sem4aero.xlsx']
+imdata = ['sem4cse.xlsx','sem4aiml.xlsx','sem4ds.xlsx' ,'sem4cs.xlsx','sem4csit.xlsx' 'sem4ce.xlsx',
+          'sem4eee.xlsx' ,'sem4mech.xlsx' ,'sem4ece.xlsx' ,'sem4it.xlsx' ,'sem4aero.xlsx']
 
 idata=[]
 ihs=[]
@@ -48,7 +47,6 @@ roll_number = st.text_input("Enter Roll Number(In Uppercase!)")
 res_d=[]
 
 
-
 for y in range(len(semesters)):
     if selected_semester == semesters[y]:
         for i in range(len(data)):
@@ -80,8 +78,10 @@ else:
 st.write(f"You selected: Branch - {selected_branch}, Semester - {selected_semester}, Exam Type - {selected_exam_type}")
 st.caption('Currently works for only :blue[4th Semester] ')
 
+
 hide_st_style = """
             <style>
+            
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             header {visibility: hidden;}
