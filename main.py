@@ -59,8 +59,12 @@ for y in range(len(semesters)):
                         res_d.append(filtered_data[[str(k) for k in headings_sheet[j]]])
                         break
     
-if (len(res_d)>0):
-    if (str(selected_semester) in str(res_d[0]['Semester'])) :
+if ((len(res_d)>0)):
+    list1 = list(str(res_d[0]).split())
+    list2 = list(str(selected_semester).split())
+    list1.sort()
+    list2.sort()
+    if (list1[1]==list2[0]) :
         st.write("Student Marks for Selected Branch, Semester, and Roll Number:")
         st.write(res_d[0])
     else:
