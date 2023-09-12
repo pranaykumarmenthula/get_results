@@ -60,7 +60,9 @@ try:
                                                                                     break
     
             if ((len(res_d)>0)):
-                        if (str(selected_semester) in str(res_d[0]['Semester'])) :
+                        s1=str(selected_semester)
+                        s2=str(res_d[0]['Semester'])
+                        if (s1 in s2) :
                                     st.write("Student Marks for Selected Branch, Semester, and Roll Number:")
                                     st.write(res_d[0])
                         else:
