@@ -3,7 +3,6 @@ import pandas as pd
 
 hide_st_style = """
             <style>
-            
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             header {visibility: hidden;}
@@ -22,13 +21,10 @@ for i in range(len(imdata)):
     def load_data():
         df = pd.read_excel( imdata[i] , engine='openpyxl')
         return df
-
     data = load_data()
     hs = data.columns
     idata.append(data)
     ihs.append(hs)
-
-
 
 
 data=[x for x in idata]
@@ -46,12 +42,8 @@ exam_types = ["CIE-I","CIE-II" , "Final Exam"]
 st.title("Get Results")
 
 selected_branch = st.selectbox("Select Branch", branches)
-
 selected_semester = st.selectbox("Select Semester", semesters)
-
 selected_exam_type = st.selectbox("Select Exam Type", exam_types)
-
-
 roll_number = st.text_input("Enter Roll Number(In Uppercase!)")
 
 res_d=[]
@@ -75,18 +67,11 @@ try:
                                     st.write("No data found for the selected options.")
             else:
                         st.write("No data found for the selected options.")
-
-
+            st.write(f"You selected: Branch - {selected_branch}, Semester - {selected_semester}, Exam Type - {selected_exam_type}")
+            st.caption('Currently works for only :blue[4th Semester] ')
 except Exception as e:
         st.error(f"An error occurred")
         st.write("Working on Issues...")
-
-        
-        
-
-
-st.write(f"You selected: Branch - {selected_branch}, Semester - {selected_semester}, Exam Type - {selected_exam_type}")
-st.caption('Currently works for only :blue[4th Semester] ')
 
 
 
