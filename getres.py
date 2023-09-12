@@ -48,7 +48,7 @@ roll_number = st.text_input("Enter Roll Number(In Uppercase!)")
 
 res_d=[]
 
-
+try:
             for y in range(len(semesters)):
                         if selected_semester == semesters[y]:
                                     for i in range(len(data)):
@@ -73,5 +73,7 @@ res_d=[]
             st.caption('Currently works for only :blue[4th Semester] ')
 
 
-
+except Exception as e:
+        st.error(f"An error occurred : {str(e)}")
+        st.write("Working on Issues...")
 
