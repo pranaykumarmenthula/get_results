@@ -56,7 +56,7 @@ roll_number = st.text_input("Enter Roll Number(In Uppercase!)")
 
 res_d=[]
 
-
+try:
 for y in range(len(semesters)):
     if selected_semester == semesters[y]:
         for i in range(len(data)):
@@ -77,6 +77,11 @@ if ((len(res_d)>0)):
         st.write("No data found for the selected options.")
 else:
     st.write("No data found for the selected options.")
+
+
+except Exception as e:
+        st.error(f"An error occurred")
+        st.write("Working on Issues...")
 
         
         
