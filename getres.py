@@ -63,7 +63,7 @@ for y in range(len(semesters)):
             for j in range(len(branches)):
                 if (selected_branch == branches[j] and selected_semester == semesters[y]):
 
-                    filtered_data = data[j][((data[j]['Branch'] == selected_branch) & (data[j]['Exam Type'] == selected_exam_type) & (data[j]['Rollno'] == roll_number)) ]
+                    filtered_data = data[j][((data[j]['Branch'] == selected_branch) & (data[j]['Exam Type'] == selected_exam_type) & (data[j]['Rollno'] == roll_number.upper())) ]
  
                     if not filtered_data.empty:
                         res_d.append(filtered_data[[str(k) for k in headings_sheet[j]]])
