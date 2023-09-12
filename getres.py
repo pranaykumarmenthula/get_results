@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import re
 
 hide_st_style = """
             <style>
@@ -62,8 +63,7 @@ try:
             if ((len(res_d)>0)):
                         s1=str(selected_semester)
                         s2=str(res_d[0])
-                        index = s2.find(s1)
-                        if (index != -1) :
+                        if re.search(s1, s2):
                                     st.write("Student Marks for Selected Branch, Semester, and Roll Number:")
                                     st.write(res_d[0])
                         else:
