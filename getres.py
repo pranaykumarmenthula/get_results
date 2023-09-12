@@ -71,9 +71,7 @@ try:
                         st.write("No data found for the selected options.")
             st.write(f"You selected: Branch - {selected_branch}, Semester - {selected_semester}, Exam Type - {selected_exam_type}")
             st.caption('Currently works for only :blue[4th Semester] ')
-except Exception as e:
-        st.error(f"An error occurred")
-        st.write("Working on Issues...")
+
 
 
 
