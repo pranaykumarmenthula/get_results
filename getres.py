@@ -57,26 +57,24 @@ roll_number = st.text_input("Enter Roll Number(In Uppercase!)")
 res_d=[]
 
 try:
-for y in range(len(semesters)):
-    if selected_semester == semesters[y]:
-        for i in range(len(data)):
-            for j in range(len(branches)):
-                if (selected_branch == branches[j] and selected_semester == semesters[y]):
-
-                    filtered_data = data[j][((data[j]['Branch'] == selected_branch) & (data[j]['Exam Type'] == selected_exam_type) & (data[j]['Rollno'] == roll_number.upper())) ]
- 
-                    if not filtered_data.empty:
-                        res_d.append(filtered_data[[str(k) for k in headings_sheet[j]]])
-                        break
+            for y in range(len(semesters)):
+                        if selected_semester == semesters[y]:
+                                    for i in range(len(data)):
+                                                for j in range(len(branches)):
+                                                            if (selected_branch == branches[j] and selected_semester == semesters[y]):
+                                                                        filtered_data = data[j][((data[j]['Branch'] == selected_branch) & (data[j]['Exam Type'] == selected_exam_type) & (data[j]['Rollno'] == roll_number.upper())) ]
+                                                                        if not filtered_data.empty:
+                                                                                    res_d.append(filtered_data[[str(k) for k in headings_sheet[j]]])
+                                                                                    break
     
-if ((len(res_d)>0)):
-    if (str(selected_semester) in str(res_d[0]['Semester'])) :
-        st.write("Student Marks for Selected Branch, Semester, and Roll Number:")
-        st.write(res_d[0])
-    else:
-        st.write("No data found for the selected options.")
-else:
-    st.write("No data found for the selected options.")
+            if ((len(res_d)>0)):
+                        if (str(selected_semester) in str(res_d[0]['Semester'])) :
+                                    st.write("Student Marks for Selected Branch, Semester, and Roll Number:")
+                                    st.write(res_d[0])
+                        else:
+                                    st.write("No data found for the selected options.")
+            else:
+                        st.write("No data found for the selected options.")
 
 
 except Exception as e:
