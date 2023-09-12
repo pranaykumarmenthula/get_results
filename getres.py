@@ -70,8 +70,11 @@ for y in range(len(semesters)):
                         break
     
 if ((len(res_d)>0)):
+    if (str(selected_semester) in str(res_d[0]['Semester'])) :
         st.write("Student Marks for Selected Branch, Semester, and Roll Number:")
         st.write(res_d[0])
+    else:
+        st.write("No data found for the selected options.")
 else:
     st.write("No data found for the selected options.")
 
