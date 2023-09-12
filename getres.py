@@ -61,7 +61,7 @@ try:
     
             if ((len(res_d)>0)):
                         s1=str(selected_semester)
-                        s2=str(res_d[0]['Semester'])
+                        s2=str(res_d[0])
                         if (s1 in s2) :
                                     st.write("Student Marks for Selected Branch, Semester, and Roll Number:")
                                     st.write(res_d[0])
