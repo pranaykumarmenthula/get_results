@@ -1,5 +1,4 @@
 #required packages
 pandas==2.0.3
 openpyxl
-python==3.9.9
 regex==2023.8.8
