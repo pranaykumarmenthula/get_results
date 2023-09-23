@@ -18,7 +18,7 @@ custom_css = """
   .block-container{
         padding : 0px;
     }
-    .css-10trblm.e1nzilvr0{
+    .st-emotion-cache-10trblm.e1nzilvr1{
         display : flex;
         justify-content : center;
     }
