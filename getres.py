@@ -1,7 +1,9 @@
 import streamlit as st
 import pandas as pd
 import re
+from streamlit_option_menu import option_menu
 
+st.title("IARE Student Tools")
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -10,6 +12,20 @@ hide_st_style = """
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
+
+custom_css = """
+<style>
+  .block-container{
+        padding : 0px;
+    }
+    .css-10trblm.e1nzilvr0{
+        display : flex;
+        justify-content : center;
+    }
+</style>
+"""
+
+st.markdown(custom_css, unsafe_allow_html=True)
 
 
 imdata = ['sem4cse.xlsx','sem4aiml.xlsx','sem4ds.xlsx' ,'sem4cs.xlsx','sem4csit.xlsx' ,'sem4ce.xlsx',
