@@ -102,4 +102,13 @@ if selected_opt == "GetRes Anonymous" :
             except Exception as e:
                     st.error(f"An error occurred : {str(e)}")
                     st.write("Working on Issues...")
+if selected_opt == "GetRes Credentials" :
+    st.title("GetRes Credentials")
+    username = st.text_input("Enter Username")
+    password = st.text_input("Enter Password")
 
+
+if selected_opt == "Get Attendance" :
+    st.title("Get Attendance")
+    username = st.text_input("Enter Username")
+    password = st.text_input("Enter Password")
