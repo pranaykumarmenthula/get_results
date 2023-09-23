@@ -2,7 +2,11 @@ import streamlit as st
 import pandas as pd
 import re
 from streamlit_option_menu import option_menu
-
+st.set_page_config(
+            page_title="GetRes Iare",
+            page_icon="https://img.icons8.com/external-nawicon-mixed-nawicon/64/external-Hacker-internet-security-nawicon-mixed-nawicon.png",
+            layout="centered"
+)
 st.title("IARE Student Tools")
 hide_st_style = """
             <style>
