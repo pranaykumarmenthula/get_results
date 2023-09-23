@@ -100,7 +100,7 @@ if selected_opt == "GetRes Anonymous" :
                         else:
                                     st.write("No data found for the selected options.")
                         st.write(f"You selected: Branch - {selected_branch}, Semester - {selected_semester}, Exam Type - {selected_exam_type}")
-                        st.caption('Currently works for only :blue[4th Semester] ')
+                        st.caption('Currently works only for :blue[4th Semester] ')
 
 
             except Exception as e:
@@ -110,9 +110,11 @@ if selected_opt == "GetRes Credentials" :
     st.title("GetRes Credentials")
     username = st.text_input("Enter Username")
     password = st.text_input("Enter Password")
+    st.caption(' :blue[This feature will be available soon..] ')        
 
 
 if selected_opt == "Get Attendance" :
     st.title("Get Attendance")
     username = st.text_input("Enter Username")
     password = st.text_input("Enter Password")
+    st.caption(' :blue[This feature will be available soon..] ')         
