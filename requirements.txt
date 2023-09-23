@@ -2,3 +2,4 @@
 pandas==2.0.3
 openpyxl
 regex==2023.8.8
+streamlit-option-menu==0.3.6
