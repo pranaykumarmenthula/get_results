@@ -31,8 +31,14 @@ custom_css = """
     }
 </style>
 """
-
 st.markdown(custom_css, unsafe_allow_html=True)
+
+custom_js = """
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1009909662863685"
+     crossorigin="anonymous">
+     </script>
+"""
+st.markdown(custom_js, unsafe_allow_html=True)
 
 selected_opt = option_menu(
     menu_title=None,
