@@ -10,6 +10,21 @@ st.set_page_config(
             page_icon="https://img.icons8.com/external-nawicon-mixed-nawicon/64/external-Hacker-internet-security-nawicon-mixed-nawicon.png",
             layout="centered"
 )
+ad_code1 = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1009909662863685"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+</body>
+</html>
+
+"""
+st.markdown(ad_code1, unsafe_allow_html=True)
+
 st.title("IARE Student Tools")
 hide_st_style = """
             <style>
@@ -173,3 +188,20 @@ if selected_opt == "Get Attendance" :
     username = st.text_input("Enter Username")
     password = st.text_input("Enter Password")
     st.caption(' :blue[This feature will be available soon..] ')         
+
+
+ad_code = """
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1009909662863685"
+     crossorigin="anonymous"></script>
+<!-- getres -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1009909662863685"
+     data-ad-slot="9448856519"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+"""
+st.markdown(ad_code, unsafe_allow_html=True)
