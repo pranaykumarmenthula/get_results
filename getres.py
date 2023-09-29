@@ -179,8 +179,8 @@ if selected_opt == "GetRes Credentials" :
                                                 st.write(df)
                                     else:
                                                 st.error("Failed to access the page.")
-                    else:
-                                st.error("Please enter details before submitting.")
+                        else:
+                                    st.error("Please enter details before submitting.")
 
 
 if selected_opt == "Get Attendance" :
