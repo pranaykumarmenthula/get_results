@@ -132,55 +132,55 @@ if selected_opt == "GetRes Anonymous" :
                     st.write("Working on Issues...")
 
 if selected_opt == "GetRes Credentials" :
-    st.title("GetRes Credentials")
-    username = st.text_input("Enter Username:" )
-    password = st.text_input("Enter Password:", type="password")
-    if st.button("Submit"):
-        if username!=None and password!=None:
-            wait_message = st.empty()
-            wait_message.text("Please wait...")
-            session = requests.Session()
-            login_url = 'https://samvidha.iare.ac.in/pages/login/checkUser.php'
-            login_payload = {
-                'username': username,
-                'password': password
-            }
-            login_response = session.post(login_url, data=login_payload)
-            target_url = 'https://samvidha.iare.ac.in/home?action=cie_marks_mba'
+            st.title("GetRes Credentials")
+            username = st.text_input("Enter Username:" )
+            password = st.text_input("Enter Password:", type="password")
+            if st.button("Submit"):
+                        if username!=None and password!=None:
+                                    wait_message = st.empty()
+                                    wait_message.text("Please wait...")
+                                    session = requests.Session()
+                                    login_url = 'https://samvidha.iare.ac.in/pages/login/checkUser.php'
+                                    login_payload = {
+                                        'username': username,
+                                        'password': password
+                                    }
+                                    login_response = session.post(login_url, data=login_payload)
+                                    target_url = 'https://samvidha.iare.ac.in/home?action=cie_marks_mba'
             
-            page_response = session.get(target_url)
-            if page_response.status_code == 200:
-                soup = BeautifulSoup(page_response.text, 'html.parser')
+                                    page_response = session.get(target_url)
+                                    if page_response.status_code == 200:
+                                                soup = BeautifulSoup(page_response.text, 'html.parser')
                 
-                table = soup.find('table', class_='table table-bordered table-sm table-striped')
+                                                table = soup.find('table', class_='table table-bordered table-sm table-striped')
                 
-                headers = table.find_all("th")
-                titles=[]
-                titles_t=[]
-                for i in headers:
-                    title = i.text 
-                    titles.append(title)
-                titles_t = titles[3:11]
+                                                headers = table.find_all("th")
+                                                titles=[]
+                                                titles_t=[]
+                                                for i in headers:
+                                                            title = i.text 
+                                                            titles.append(title)
+                                                titles_t = titles[3:11]
                 
-                t=len(titles_t)
-                data = table.find_all("td")
-                td_data = [tag.get_text() for tag in data]
+                                                t=len(titles_t)
+                                                data = table.find_all("td")
+                                                td_data = [tag.get_text() for tag in data]
                 
-                chunks = []
-                for i in range(0, len(td_data), 8):
-                    chunk = td_data[i:i + 8]
-                    if chunk[0] == " Laboratory Marks (Practical) " :
-                        break
-                    else:
-                        chunks.append(chunk)
+                                                chunks = []
+                                                for i in range(0, len(td_data), 8):
+                                                            chunk = td_data[i:i + 8]
+                                                            if chunk[0] == " Laboratory Marks (Practical) " :
+                                                                        break
+                                                            else:
+                                                                        chunks.append(chunk)
     
-                df = pd.DataFrame(chunks, columns=titles_t)
-                wait_message.text("")
-                st.write(df)
-            else:
-                st.write("Failed to access the page.")
-        else:
-            st.error("Please enter details before submitting.")
+                                                df = pd.DataFrame(chunks, columns=titles_t)
+                                                wait_message.text("")
+                                                st.write(df)
+                                    else:
+                                                st.error("Failed to access the page.")
+                    else:
+                                st.error("Please enter details before submitting.")
 
 
 if selected_opt == "Get Attendance" :
