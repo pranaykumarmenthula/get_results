@@ -168,8 +168,8 @@ if selected_opt == "GetRes Credentials" :
                     td_data = [tag.get_text() for tag in data]
                 
                     chunks = []
-                    for i in range(0, len(td_data), 8):
-                        chunk = td_data[i:i + 8]
+                    for i in range(0, len(td_data), 4):
+                        chunk = td_data[i:i + 4]
                         if chunk[0] == " Laboratory Marks (Practical) " :
                             break
                         else:
@@ -177,6 +177,7 @@ if selected_opt == "GetRes Credentials" :
     
                     df = pd.DataFrame(chunks, columns=titles_t)
                     wait_message.text("")
+                    st.write("Current Semester CIE Marks")
                     st.write(df , index=False)
                 else:
                     st.write("Failed to access the page.")
