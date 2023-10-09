@@ -168,8 +168,8 @@ if selected_opt == "GetRes Credentials" :
                     td_data = [tag.get_text() for tag in data]
                 
                     chunks = []
-                    for i in range(0, len(td_data), 4):
-                        chunk = td_data[i:i + 4]
+                    for i in range(0, len(td_data), t):
+                        chunk = td_data[i:i + t]
                         if chunk[0] == " Laboratory Marks (Practical) " :
                             break
                         else:
