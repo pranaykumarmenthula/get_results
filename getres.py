@@ -100,7 +100,7 @@ if selected_opt == "GetRes Anonymous" :
             selected_branch = st.selectbox("Select Branch", branches)
             selected_semester = st.selectbox("Select Semester", semesters)
             selected_exam_type = st.selectbox("Select Exam Type", exam_types)
-            roll_number = st.text_input("Enter Roll Number(In Uppercase!)")
+            roll_number = st.text_input("Enter Roll Number")
 
             res_d=[]
 
