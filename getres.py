@@ -141,7 +141,7 @@ if selected_opt == "GetRes Anonymous" :
 
             selected_batch = st.selectbox("Select Batch", batch)
             selected_branch = st.selectbox("Select Branch", branches)
-            search_key = st.text_input("Enter Name")
+            search_key = st.text_input("Enter Name or Roll Number")
 
             if selected_branch == "Civil Engineering":
                         dept_num = 1
@@ -210,7 +210,7 @@ if selected_opt == "GetRes Anonymous" :
             new_cols = ['S.NO.' , 'Roll No.' , 'Name' , 'Department' , 'I sem' , 'II sem' ,'III sem' , 'IV sem' , 'V sem' , 'VI sem' , 'VII sem' , 'VIII sem' , 'CGPA']
             df.columns = new_cols
             df['Department'] = str(dept_name)
-            result = df[df['Name'].str.contains(search_key.upper())]
+            result = df[df['Name'].str.contains(search_key.upper()) | df['Roll No.'].str.contains(search_key.upper())]
             if search_key:
                         st.write(result)
 
