@@ -91,7 +91,7 @@ if selected_opt == "GetRes Anonymous" :
                         "Electronics and Communication Engineering" , 
                         "Information Technology" , "AERO"]
             semesters = ["1st Semester", "2nd Semester", "3rd Semester", "4th Semester", "5th Semester", "6th Semester", "7th Semester", "8th Semester"]
-            exam_types = ["CIE-I","CIE-II" , "Final Exam"]
+            exam_types = ["CIE-I","CIE-II"]
 
 
             st.title("Get Results")
