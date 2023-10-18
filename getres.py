@@ -95,6 +95,7 @@ if selected_opt == "GetRes Anonymous" :
 
 
             st.title("Get Results")
+            st.subheader("CIE Marks")
 
             selected_branch = st.selectbox("Select Branch", branches)
             selected_semester = st.selectbox("Select Semester", semesters)
