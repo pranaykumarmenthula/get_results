@@ -5,6 +5,7 @@ from streamlit_option_menu import option_menu
 import requests
 from bs4 import BeautifulSoup
 import json
+import plotly.express as px
 
 st.set_page_config(
             page_title="GetRes Iare",
@@ -133,86 +134,107 @@ if selected_opt == "GetRes Anonymous" :
                     st.error(f"An error occurred : {str(e)}")
                     st.write("Working on Issues...")
             st.subheader("CGPA")
-            branches = [ "Computer Science Engineering","CSE(AIML)","CSE(DS)" ,"CS" ,"CSIT" ,
-            "Civil Engineering" ,"EEE","Mechanical Engineering" ,
-            "Electronics and Communication Engineering" , 
-            "Information Technology" , "AERO" , "MBA"]
-            batch = ["2023" , "2022" , "2021" , "2020" , "2019" , "2018" , "2017" , "2016"] 
+            try:
+                        branches = [ "Computer Science Engineering","CSE(AIML)","CSE(DS)" ,"CS" ,"CSIT" ,
+                "Civil Engineering" ,"EEE","Mechanical Engineering" ,
+                "Electronics and Communication Engineering" , 
+                "Information Technology" , "AERO" , "MBA"]
+                        batch = ["2023" , "2022" , "2021" , "2020" , "2019" , "2018" , "2017" , "2016"] 
 
-            selected_batch = st.selectbox("Select Batch", batch)
-            selected_branch = st.selectbox("Select Branch", branches)
-            search_key = st.text_input("Enter Name or Roll Number")
+                        selected_batch = st.selectbox("Select Batch", batch)
+                        selected_branch = st.selectbox("Select Branch", branches)
+                        search_key = st.text_input("Enter Name")
 
-            if selected_branch == "Civil Engineering":
-                        dept_num = 1
-                        dept_name = "Civil Engineering"
-            if selected_branch == "EEE":
-                        dept_num = 2
-                        dept_name = "EEE"
-            if selected_branch == "Mechanical Engineering":
-                        dept_num = 3
-                        dept_name = "Mechanical Engineering"
-            if selected_branch == "Electronics and Communication Engineering":
-                        dept_num = 4
-                        dept_name = "Electronics and Communication Engineering"
-            if selected_branch == "Computer Science Engineering":
-                        dept_num = 5
-                        dept_name = "Computer Science Engineering"
-            if selected_branch == "Information Technology":
-                        dept_num = 6
-                        dept_name = "Information Technology"
-            if selected_branch == "AERO":
-                        dept_num = 7
-                        dept_name ="AERO"
-            if selected_branch == "MBA":
-                        dept_num = 9
-                        dept_name ="MBA"
-            if selected_branch == "CSE(AIML)":
-                        dept_num = 34
-                        dept_name ="CSE(AIML)"
-            if selected_branch == "CSE(DS)":
-                        dept_num = 35
-                        dept_name ="CSE(DS)"
-            if selected_branch == "CS":
-                        dept_num = 36
-                        dept_name ="CS"
-            if selected_branch == "CSIT":
-                        dept_num = 37
-                        dept_name ="CSIT"
+                        if selected_branch == "Civil Engineering":
+                                    dept_num = 1
+                                    dept_name = "Civil Engineering"
+                        if selected_branch == "EEE":
+                                    dept_num = 2
+                                    dept_name = "EEE"
+                        if selected_branch == "Mechanical Engineering":
+                                    dept_num = 3
+                                    dept_name = "Mechanical Engineering"
+                        if selected_branch == "Electronics and Communication Engineering":
+                                    dept_num = 4
+                                    dept_name = "Electronics and Communication Engineering"
+                        if selected_branch == "Computer Science Engineering":
+                                    dept_num = 5
+                                    dept_name = "Computer Science Engineering"
+                        if selected_branch == "Information Technology":
+                                    dept_num = 6
+                                    dept_name = "Information Technology"
+                        if selected_branch == "AERO":
+                                    dept_num = 7
+                                    dept_name ="AERO"
+                        if selected_branch == "MBA":
+                                    dept_num = 9
+                                    dept_name ="MBA"
+                        if selected_branch == "CSE(AIML)":
+                                    dept_num = 34
+                                    dept_name ="CSE(AIML)"
+                        if selected_branch == "CSE(DS)":
+                                    dept_num = 35
+                                    dept_name ="CSE(DS)"
+                        if selected_branch == "CS":
+                                    dept_num = 36
+                                    dept_name ="CS"
+                        if selected_branch == "CSIT":
+                                    dept_num = 37
+                                    dept_name ="CSIT"
 
-            url = "https://samvidha.iare.ac.in/pages/admin/reports/ajax/cal_cgpa.php"
+                        url = "https://samvidha.iare.ac.in/pages/admin/reports/ajax/cal_cgpa.php"
 
-            payload = "batch="+str(selected_batch)+"&dept="+str(dept_num)+"&sem=4&action=get_cgp"
-            headers = {
-        "authority": "samvidha.iare.ac.in",
-        "accept": "application/json, text/javascript, */*; q=0.01",
-        "accept-language": "en-US,en;q=0.7",
-        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-        "cookie": "PHPSESSID=r1v167a3p2af2nengeu5j3s0dc",
-        "origin": "https://samvidha.iare.ac.in",
-        "referer": "https://samvidha.iare.ac.in/home?action=cgp_sem_HOD",
-        "sec-ch-ua": "^\^Chromium^^;v=^\^118^^, ^\^Brave^^;v=^\^118^^, ^\^Not=A?Brand^^;v=^\^99^^",
-        "sec-ch-ua-mobile": "?0",
-        "sec-ch-ua-platform": "^\^Windows^^",
-        "sec-fetch-dest": "empty",
-        "sec-fetch-mode": "cors",
-        "sec-fetch-site": "same-origin",
-        "sec-gpc": "1",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36",
-        "x-requested-with": "XMLHttpRequest"
-            }
+                        payload = "batch="+str(selected_batch)+"&dept="+str(dept_num)+"&sem=4&action=get_cgp"
+                        headers = {
+                                    "authority": "samvidha.iare.ac.in",
+                                    "accept": "application/json, text/javascript, */*; q=0.01",
+                                    "accept-language": "en-US,en;q=0.7",
+                                    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+                                    "cookie": "PHPSESSID=r1v167a3p2af2nengeu5j3s0dc",
+                                    "origin": "https://samvidha.iare.ac.in",
+                                    "referer": "https://samvidha.iare.ac.in/home?action=cgp_sem_HOD",
+                                    "sec-ch-ua": "^\^Chromium^^;v=^\^118^^, ^\^Brave^^;v=^\^118^^, ^\^Not=A?Brand^^;v=^\^99^^",
+                                    "sec-ch-ua-mobile": "?0",
+                                    "sec-ch-ua-platform": "^\^Windows^^",
+                                    "sec-fetch-dest": "empty",
+                                    "sec-fetch-mode": "cors",
+                                    "sec-fetch-site": "same-origin",
+                                    "sec-gpc": "1",
+                                    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36",
+                                    "x-requested-with": "XMLHttpRequest"
+                        }
 
-            response = requests.request("POST", url, data=payload, headers=headers)
+                        response = requests.request("POST", url, data=payload, headers=headers)
 
 
-            data_dict = json.loads(response.text)
-            df = pd.DataFrame(data_dict['data'])
-            new_cols = ['S.NO.' , 'Roll No.' , 'Name' , 'Department' , 'I sem' , 'II sem' ,'III sem' , 'IV sem' , 'V sem' , 'VI sem' , 'VII sem' , 'VIII sem' , 'CGPA']
-            df.columns = new_cols
-            df['Department'] = str(dept_name)
-            result = df[df['Name'].str.contains(search_key.upper()) | df['Roll No.'].str.contains(search_key.upper())]
-            if search_key:
-                        st.write(result)
+                        data_dict = json.loads(response.text)
+                        df = pd.DataFrame(data_dict['data'])
+                        new_cols = ['S.NO.' , 'Roll No.' , 'Name' , 'Department' , 'I sem' , 'II sem' ,'III sem' , 'IV sem' , 'V sem' , 'VI sem' , 'VII sem' , 'VIII sem' , 'CGPA']
+                        df.columns = new_cols
+                        df['Department'] = str(dept_name)
+                        result = df[df['Name'].str.contains(search_key.upper()) | df['Roll No.'].str.contains(search_key.upper())]
+                        plot_df = result
+                        if search_key:
+                                    st.write(result)
+                                    if st.button("Plot"):
+                                                l= result.iloc[0].to_list()
+                                                l_f = l[4:12]
+                                                lf=[]
+                                                for i in range(len(l_f)):
+                                                            if l_f[i] is not None:
+                                                                        lf.append(l_f[i])
+                                                l_int = [float(element) for element in lf]
+                                                l_len=[]
+                                                for i in range(len(l_int)):
+                                                            l_len.append(i+1)
+                                                data = pd.DataFrame({'SGPA': l_int, 'Semester': l_len})
+                                                fig = px.bar(data, x='Semester', y='SGPA', text='SGPA', title='SGPA Bar Chart')
+                                                fig.update_traces(texttemplate='%{text}', textposition='outside')
+                                                st.plotly_chart(fig)
+                                                st.write("CGPA is : :blue[{}]".format(l[12]))
+            except Exception as e:
+                        st.error(f"An error occurred")
+                        st.write("Working on Issues...")
 
 if selected_opt == "GetRes Credentials" :
     st.title("GetRes Credentials")
