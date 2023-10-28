@@ -293,9 +293,86 @@ if selected_opt == "GetRes Credentials" :
 
 if selected_opt == "Get Attendance" :
     st.title("Get Attendance")
-    username = st.text_input("Enter Username")
-    password = st.text_input("Enter Password")
-    st.caption(' :blue[This feature will be available soon..] ')         
+    rollno = st.text_input("Enter Roll Number")
+    if st.button("Submit"):
+        try:
+            url = "https://samvidha.iare.ac.in/home"
+            querystring = {"action":"stud_att_hod"}
+            payload = "rollno="+str(rollno)+"&ok_roll=GET%2BATTENDANCE"
+            headers = {
+                "authority": "samvidha.iare.ac.in",
+                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+                "accept-language": "en-US,en;q=0.8",
+                "cache-control": "max-age=0",
+                "content-type": "application/x-www-form-urlencoded",
+                "cookie": "PHPSESSID=9jt74fpmr3p1c0uek69cepd6kc",
+                "origin": "https://samvidha.iare.ac.in",
+                "referer": "https://samvidha.iare.ac.in/home?action=stud_att_hod",
+                "sec-ch-ua": "^\^Chromium^^;v=^\^118^^, ^\^Brave^^;v=^\^118^^, ^\^Not=A?Brand^^;v=^\^99^^",
+                "sec-ch-ua-mobile": "?0",
+                "sec-ch-ua-platform": "^\^Windows^^",
+                "sec-fetch-dest": "document",
+                "sec-fetch-mode": "navigate",
+                "sec-fetch-site": "same-origin",
+                "sec-fetch-user": "?1",
+                "sec-gpc": "1",
+                "upgrade-insecure-requests": "1",
+                "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+            }
+            response = requests.request("POST", url, data=payload, headers=headers, params=querystring)
+
+            soup = BeautifulSoup(response.text, 'html.parser')
+
+            table = soup.find('table', class_='table table-striped table-bordered table-hover table-head-fixed responsive ')
+
+            thead = soup.find('thead')
+            headings = [th.text for th in thead.find_all('th')]
+
+            tbody = soup.find('tbody')
+            table_data = []
+            for row in tbody.find_all('tr'):
+                row_data = [td.text for td in row.find_all('td')]
+                table_data.append(row_data)
+ 
+            df = pd.DataFrame(table_data, columns=headings)
+            
+
+            lst_cond = [x for x in df['Conducted']]
+            for i in range(len(lst_cond)):
+                if lst_cond[i]=="":
+                    lst_cond[i]='0'
+                else:
+                    pass
+            lst_att = [x for x in df['Attended']]
+            for i in range(len(lst_cond)):
+                if lst_att[i]=="":
+                    lst_att[i]='0'
+                else:
+                    pass
+            
+            lst_final = []
+            att_numbers = [int(num) for num in lst_att]
+            cond_numbers = [int(num) for num in lst_cond]
+            for i in range(len(lst_att)):
+                x = cond_numbers[i]
+                y= att_numbers[i]
+                z=(x-y)*4
+                fin = z - x
+                lst_final.append(fin)
+            
+            lst_sub = [x for x in df['Course Name']]
+            try:
+                for i in range(len(lst_final)):
+                    if lst_final[i] != 0:
+                        st.write(lst_sub[i] ,": :red[{} Classes]".format(int(lst_final[i])) )
+                    else:
+                        pass
+                st.write(df)
+            except Exception as e:
+                st.success(":green[Satisfactory]")
+
+        except Exception as e:
+            st.error("Something went wrong... Please try again!!")       
 
 
 ad_code = """
