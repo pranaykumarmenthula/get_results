@@ -305,7 +305,7 @@ if selected_opt == "Get Attendance" :
                 "accept-language": "en-US,en;q=0.8",
                 "cache-control": "max-age=0",
                 "content-type": "application/x-www-form-urlencoded",
-                "cookie": "PHPSESSID=9jt74fpmr3p1c0uek69cepd6kc",
+                "cookie": "PHPSESSID=na6qqne9vmqpsu5fhf7lulmg75",
                 "origin": "https://samvidha.iare.ac.in",
                 "referer": "https://samvidha.iare.ac.in/home?action=stud_att_hod",
                 "sec-ch-ua": "^\^Chromium^^;v=^\^118^^, ^\^Brave^^;v=^\^118^^, ^\^Not=A?Brand^^;v=^\^99^^",
