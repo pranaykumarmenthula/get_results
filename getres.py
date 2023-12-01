@@ -304,7 +304,7 @@ if selected_opt == "Get Attendance" :
                 "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
                 "accept-language": "en-US,en;q=0.8",
                 "content-type": "application/x-www-form-urlencoded",
-                "cookie": "PHPSESSID=g3p55lps4enado5tpnf1ofspsa",
+                "cookie": "PHPSESSID=tajhsjjosiuqrbimcrmcv36qhb",
                 "origin": "https://samvidha.iare.ac.in",
                 "referer": "https://samvidha.iare.ac.in/home?action=stud_att_hod",
                 "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
