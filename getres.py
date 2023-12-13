@@ -304,7 +304,6 @@ if selected_opt == "Get Attendance" :
                 "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
                 "accept-language": "en-US,en;q=0.8",
                 "content-type": "application/x-www-form-urlencoded",
-                "Date":"Wed, 13 Dec 2023 01:28:18 GMT",
                 "Expires":"Thu, 19 Nov 2030 08:52:00 GMT",
                 "cookie": "PHPSESSID=8a7hbtrjcjj9aq4chcmknm5a31",
                 "origin": "https://samvidha.iare.ac.in",
@@ -348,9 +347,12 @@ if selected_opt == "Get Attendance" :
             for i in range(len(lst_att)):
                 x = cond_numbers[i]
                 y= att_numbers[i]
-                z=(x-y)*4
-                fin = z - x
-                lst_final.append(fin)
+                if x>y:
+                    z=(x-y)*4
+                    fin = z - x
+                    lst_final.append(fin)
+                else:
+                    lst_final.append(0)
             
             lst_sub = [x for x in df['Course Name']]
             try:
