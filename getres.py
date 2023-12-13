@@ -347,7 +347,7 @@ if selected_opt == "Get Attendance" :
             for i in range(len(lst_att)):
                 x = cond_numbers[i]
                 y= att_numbers[i]
-                if x>y:
+                if y<(x*0.75):
                     z=(x-y)*4
                     fin = z - x
                     lst_final.append(fin)
