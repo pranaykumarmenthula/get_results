@@ -360,7 +360,8 @@ if selected_opt == "Get Attendance" :
                     if lst_final[i] != 0:
                         st.write(lst_sub[i] ,": :red[{} Classes]".format(int(lst_final[i])) )
                     else:
-                        st.write("All Classes :green[Satisfactory]")
+                        pass
+                st.write("All Classes :green[Satisfactory]")
                 st.write(df)
             except Exception as e:
                 st.success(":green[Satisfactory]")
