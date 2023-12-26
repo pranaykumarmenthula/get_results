@@ -394,7 +394,7 @@ if selected_opt == "Get Attendance" :
             
 
                         except Exception as e:
-                                    st.error("Something went wrong... Please try again!!")    
+                                    st.write(e)    
 
 
 ad_code = """
