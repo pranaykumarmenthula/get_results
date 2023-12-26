@@ -53,6 +53,7 @@ custom_css = """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 os.system("playwright install")
+os.system("apt install libnss3-dev libnspr4-dev libatk1.0-0-dev libatk-bridge2.0-0-dev libcups2-dev libdrm2-dev libxkbcommon0-dev libxcomposite1-dev libxdamage1-dev libxfixes3-dev libxrandr2-dev libgbm1-dev libpango-1.0-0-dev libcairo2-dev libasound2-dev libatspi2.0-0-dev libwayland-client0-dev")
 custom_js = """
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1009909662863685"
      crossorigin="anonymous">
