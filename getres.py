@@ -6,6 +6,8 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import plotly.express as px
+import os
+
 
 st.set_page_config(
             page_title="GetRes Iare",
@@ -50,6 +52,7 @@ custom_css = """
 """
 st.markdown(custom_css, unsafe_allow_html=True)
 
+os.system("playwright install")
 custom_js = """
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1009909662863685"
      crossorigin="anonymous">
