@@ -9,3 +9,4 @@ jsonlib-python3==1.6.1
 plotly==5.17.0
 asyncio==3.4.3
 playwright==1.40.0
+python-3.8.*
