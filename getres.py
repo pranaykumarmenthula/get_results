@@ -296,78 +296,105 @@ if selected_opt == "Get Attendance" :
     rollno = st.text_input("Enter Roll Number")
     if st.button("Submit"):
         try:
-            url = "https://samvidha.iare.ac.in/home"
-            querystring = {"action":"stud_att_hod"}
-            payload = "rollno="+str(rollno)+"&ok_roll=GET%2BATTENDANCE"
-            headers = {
+            wait_message = st.empty()
+            wait_message.text("Please wait...")
+            import asyncio
+            from playwright.async_api import async_playwright
+            async def get_session_id():
+                async with async_playwright() as p:
+                    browser = await p.chromium.launch()
+                    context = await browser.new_context()
+                    page = await context.new_page()
+                    await page.goto('https://samvidha.iare.ac.in/home')
+                    await page.fill('input[name="txt_uname"]', 'aimlhod')
+                    await page.fill('input[name="txt_pwd"]', 'aiml@95')
+                    await page.click('button[type="submit"]')
+                    await page.wait_for_load_state("load")
+                    await page.wait_for_timeout(1000)
+                    await page.goto('https://samvidha.iare.ac.in/home?action=stud_att_hod')
+                    await page.wait_for_timeout(1000)
+                    await page.fill('input[name="rollno"]', "21951A")
+                    await page.wait_for_timeout(1000)
+                    await page.click('input[name="ok_roll"]')
+                    await page.wait_for_timeout(1000)
+                    cookies = await context.cookies()
+                    session_id = next((cookie['value'] for cookie in cookies if cookie['name'] == 'PHPSESSID'), None)
+                    return session_id
+            if __name__ == '__main__':
+                loop = asyncio.ProactorEventLoop()
+                asyncio.set_event_loop(loop)
+                session_id = loop.run_until_complete(get_session_id())
+                url = "https://samvidha.iare.ac.in/home"
+                querystring = {"action":"stud_att_hod"}
+                payload = "rollno="+str(rollno)+"&ok_roll=GET%2BATTENDANCE"
+                headers = {
                 "authority": "samvidha.iare.ac.in",
                 "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
                 "accept-language": "en-US,en;q=0.8",
                 "content-type": "application/x-www-form-urlencoded",
-                "Expires":"Thu, 19 Nov 1981",
-                "cookie": "PHPSESSID=8a7hbtrjcjj9aq4chcmknm5a31",
+                "cookie": "PHPSESSID="+str(session_id),
                 "origin": "https://samvidha.iare.ac.in",
                 "referer": "https://samvidha.iare.ac.in/home?action=stud_att_hod",
                 "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
-            }
-            response = requests.request("POST", url, data=payload, headers=headers, params=querystring)
+                }
+                response = requests.request("POST", url, data=payload, headers=headers, params=querystring)
 
-            soup = BeautifulSoup(response.text, 'html.parser')
+                soup = BeautifulSoup(response.text, 'html.parser')
+                table = soup.find('table', class_='table table-striped table-bordered table-hover table-head-fixed responsive ')
 
-            table = soup.find('table', class_='table table-striped table-bordered table-hover table-head-fixed responsive ')
+                thead = soup.find('thead')
+                headings = [th.text for th in thead.find_all('th')]
 
-            thead = soup.find('thead')
-            headings = [th.text for th in thead.find_all('th')]
-
-            tbody = soup.find('tbody')
-            table_data = []
-            for row in tbody.find_all('tr'):
-                row_data = [td.text for td in row.find_all('td')]
-                table_data.append(row_data)
+                tbody = soup.find('tbody')
+                table_data = []
+                for row in tbody.find_all('tr'):
+                    row_data = [td.text for td in row.find_all('td')]
+                    table_data.append(row_data)
  
-            df = pd.DataFrame(table_data, columns=headings)
+                df = pd.DataFrame(table_data, columns=headings)
             
 
-            lst_cond = [x for x in df['Conducted']]
-            for i in range(len(lst_cond)):
-                if lst_cond[i]=="":
-                    lst_cond[i]='0'
-                else:
-                    pass
-            lst_att = [x for x in df['Attended']]
-            for i in range(len(lst_cond)):
-                if lst_att[i]=="":
-                    lst_att[i]='0'
-                else:
-                    pass
-            
-            lst_final = []
-            att_numbers = [int(num) for num in lst_att]
-            cond_numbers = [int(num) for num in lst_cond]
-            for i in range(len(lst_att)):
-                x = cond_numbers[i]
-                y= att_numbers[i]
-                if y<(x*0.75):
-                    z=(x-y)*4
-                    fin = z - x
-                    lst_final.append(fin)
-                else:
-                    lst_final.append(0)
-            
-            lst_sub = [x for x in df['Course Name']]
-            try:
-                for i in range(len(lst_final)):
-                    if lst_final[i] != 0:
-                        st.write(lst_sub[i] ,": :red[{} Classes]".format(int(lst_final[i])) )
+                lst_cond = [x for x in df['Conducted']]
+                for i in range(len(lst_cond)):
+                    if lst_cond[i]=="":
+                        lst_cond[i]='0'
                     else:
                         pass
-                st.write("All Classes :green[Satisfactory]")
-                st.write(df)
-            except Exception as e:
-                st.success(":green[Satisfactory]")
+                lst_att = [x for x in df['Attended']]
+                for i in range(len(lst_cond)):
+                    if lst_att[i]=="":
+                        lst_att[i]='0'
+                    else:
+                        pass
+            
+                lst_final = []
+                att_numbers = [int(num) for num in lst_att]
+                cond_numbers = [int(num) for num in lst_cond]
+                for i in range(len(lst_att)):
+                    x = cond_numbers[i]
+                    y= att_numbers[i]
+                    if y<(x*0.75):
+                        z=(x-y)*4
+                        fin = z - x
+                        lst_final.append(fin)
+                    else:
+                        lst_final.append(0)
+            
+                lst_sub = [x for x in df['Course Name']]
+                try:
+                    for i in range(len(lst_final)):
+                        if lst_final[i] != 0:
+                            st.write(lst_sub[i] ,": :red[{} Classes]".format(int(lst_final[i])) )
+                        else:
+                            pass
+                    wait_message.text("")
+                    st.write(df)
+                except Exception as e:
+                    st.success(":green[Satisfactory]")
+            
 
         except Exception as e:
-            st.error("Something went wrong... Please try again!!")       
+            st.error("Something went wrong... Please try again!!")    
 
 
 ad_code = """
