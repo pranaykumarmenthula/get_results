@@ -321,7 +321,8 @@ if selected_opt == "Get Attendance" :
                                                             session_id = next((cookie['value'] for cookie in cookies if cookie['name'] == 'PHPSESSID'), None)
                                                             return session_id
                                     if __name__ == '__main__':
-                                                loop=asyncio.set_event_loop()
+                                                loop = asyncio.new_event_loop()
+                                                asyncio.set_event_loop(loop)
                                                 session_id = loop.run_until_complete(get_session_id())
                                                 url = "https://samvidha.iare.ac.in/home"
                                                 querystring = {"action":"stud_att_hod"}
