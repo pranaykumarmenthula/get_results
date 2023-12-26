@@ -53,6 +53,7 @@ custom_css = """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 os.system("playwright install")
+os.system("sudo playwright install-deps")
 custom_js = """
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1009909662863685"
      crossorigin="anonymous">
