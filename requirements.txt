@@ -7,5 +7,4 @@ requests==2.28.1
 beautifulsoup4==4.11.1
 jsonlib-python3==1.6.1
 plotly==5.17.0
-asyncio
-playwright
+selenium==4.16.0
