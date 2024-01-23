@@ -13,7 +13,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from webdriver_manager.chrome import ChromeDriverManager
+#from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 
@@ -308,86 +308,86 @@ if selected_opt == "Get Attendance" :
             rollno = st.text_input("Enter Roll Number")
             if st.button("Submit"):
                         try:
-                                    wait_message = st.empty()
-                                    wait_message.text("Please wait...")
-                                    chrome_options = Options()
-                                    chrome_options.add_argument("--headless=new")
-                                    chrome_options.add_argument('--disable-gpu')
-                                    chrome_options.add_argument("--no-sandbox")
-                                    chrome_options.add_argument("--disable-dev-shm-usage")
-                                    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=chrome_options)
-                                    driver.get('https://samvidha.iare.ac.in/home')
-                                    username_input = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'txt_uname')))
-                                    password_input = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'txt_pwd')))
-                                    login_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//button[contains(text(), "Sign In")]')))
-                                    username_input.send_keys('aimlhod')
-                                    password_input.send_keys('aiml@95')
-                                    login_button.click()
-                                    time.sleep(4)
-                                    driver.get('https://samvidha.iare.ac.in/home?action=stud_att_hod')
-                                    search_bar = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, 'rollno')))
-                                    search_bar.send_keys(rollno)
-                                    response = search_bar.send_keys(Keys.RETURN)
-                                    time.sleep(4)
-                                    page_source = driver.page_source
-                                    soup = BeautifulSoup(page_source, 'html.parser')
-                                    table = soup.find('table', class_='table table-striped table-bordered table-hover table-head-fixed responsive ')
+                                   # wait_message = st.empty()
+                                    #wait_message.text("Please wait...")
+                                    #chrome_options = Options()
+                                    #chrome_options.add_argument("--headless=new")
+                                    #chrome_options.add_argument('--disable-gpu')
+                                    #chrome_options.add_argument("--no-sandbox")
+                                    #chrome_options.add_argument("--disable-dev-shm-usage")
+                                    #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=chrome_options)
+                                    #driver.get('https://samvidha.iare.ac.in/home')
+                                    #username_input = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'txt_uname')))
+                                    #password_input = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'txt_pwd')))
+                                    #login_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//button[contains(text(), "Sign In")]')))
+                                    #username_input.send_keys('aimlhod')
+                                    #password_input.send_keys('aiml@95')
+                                    #login_button.click()
+                                    #time.sleep(4)
+                                    #driver.get('https://samvidha.iare.ac.in/home?action=stud_att_hod')
+                                    #search_bar = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, 'rollno')))
+                                    #search_bar.send_keys(rollno)
+                                    #response = search_bar.send_keys(Keys.RETURN)
+                                    #time.sleep(4)
+                                    #page_source = driver.page_source
+                                    #soup = BeautifulSoup(page_source, 'html.parser')
+                                    #table = soup.find('table', class_='table table-striped table-bordered table-hover table-head-fixed responsive ')
 
-                                    thead = soup.find('thead')
-                                    headings = [th.text for th in thead.find_all('th')]
+                                    #thead = soup.find('thead')
+                                    #headings = [th.text for th in thead.find_all('th')]
 
-                                    tbod = soup.find_all('tbody')
-                                    tbody=tbod[2]
-                                    table_data = []
-                                    rows=tbody.find_all('tr')
-                                    for row in rows:
-                                                row_data = [td.text for td in row.find_all('td')]
-                                                table_data.append(row_data)
+                                    #tbod = soup.find_all('tbody')
+                                    #tbody=tbod[2]
+                                    #table_data = []
+                                    #rows=tbody.find_all('tr')
+                                    #for row in rows:
+                                     #           row_data = [td.text for td in row.find_all('td')]
+                                      #          table_data.append(row_data)
  
-                                    df = pd.DataFrame(table_data, columns=headings)
+                                    #df = pd.DataFrame(table_data, columns=headings)
             
 
-                                    lst_cond = [x for x in df['Conducted']]
-                                    for i in range(len(lst_cond)):
-                                                if lst_cond[i]=="":
-                                                            lst_cond[i]='0'
-                                                else:
-                                                            pass
-                                    lst_att = [x for x in df['Attended']]
-                                    for i in range(len(lst_cond)):
-                                                if lst_att[i]=="":
-                                                            lst_att[i]='0'
-                                                else:
-                                                            pass
+                                    #lst_cond = [x for x in df['Conducted']]
+                                    #for i in range(len(lst_cond)):
+                                     #           if lst_cond[i]=="":
+                                      #                      lst_cond[i]='0'
+                                       #         else:
+                                        #                    pass
+                                    #lst_att = [x for x in df['Attended']]
+                                    #for i in range(len(lst_cond)):
+                                     #           if lst_att[i]=="":
+                                      #                      lst_att[i]='0'
+                                       #         else:
+                                        #                    pass
+            #
+                                    #lst_final = []
+                                    #att_numbers = [int(num) for num in lst_att]
+                                    #cond_numbers = [int(num) for num in lst_cond]
+                                    #for i in range(len(lst_att)):
+                                     #           x = cond_numbers[i]
+                                      #          y= att_numbers[i]
+                                       #         if y<(x*0.75):
+                                        #                    z=(x-y)*4
+                                         #                   fin = z - x
+                                          #                  lst_final.append(fin)
+                                           #     else:
+                                            #                lst_final.append(0)
             
-                                    lst_final = []
-                                    att_numbers = [int(num) for num in lst_att]
-                                    cond_numbers = [int(num) for num in lst_cond]
-                                    for i in range(len(lst_att)):
-                                                x = cond_numbers[i]
-                                                y= att_numbers[i]
-                                                if y<(x*0.75):
-                                                            z=(x-y)*4
-                                                            fin = z - x
-                                                            lst_final.append(fin)
-                                                else:
-                                                            lst_final.append(0)
-            
-                                    lst_sub = [x for x in df['Course Name']]
-                                    try:
-                                                for i in range(len(lst_final)):
-                                                            if lst_final[i] != 0:
-                                                                        st.write(lst_sub[i] ,": :red[{} Classes]".format(int(lst_final[i])) )
-                                                            else:
-                                                                        pass
-                                                wait_message.text("")
-                                                st.write(df)
-                                    except Exception as e:
-                                                st.success(":green[Satisfactory]")
+                                    #lst_sub = [x for x in df['Course Name']]
+                                    #try:
+                                     #           for i in range(len(lst_final)):
+                                      #                      if lst_final[i] != 0:
+                                       #                                 st.write(lst_sub[i] ,": :red[{} Classes]".format(int(lst_final[i])) )
+                                        #                    else:
+                                         #                               pass
+                                          #      wait_message.text("")
+                                           #     st.write(df)
+                                    #except Exception as e:
+                                     #           st.success(":green[Satisfactory]")
             
 
                         except Exception as e:
-                                    st.error(e)    
+                                    st.error('Error)    
 
 
 ad_code = """
