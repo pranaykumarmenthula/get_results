@@ -307,7 +307,7 @@ if selected_opt == "Get Attendance" :
             st.title("Get Attendance")
             rollno = st.text_input("Enter Roll Number")
             if st.button("Submit"):
-                        try:
+                        #try:
                                    # wait_message = st.empty()
                                     #wait_message.text("Please wait...")
                                     #chrome_options = Options()
@@ -386,8 +386,8 @@ if selected_opt == "Get Attendance" :
                                      #           st.success(":green[Satisfactory]")
             
 
-                        except Exception as e:
-                                    st.error('Error)    
+                        #except Exception as e:
+                         #           st.error('Error)    
 
 
 ad_code = """
