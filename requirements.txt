@@ -8,5 +8,3 @@ beautifulsoup4==4.11.1
 jsonlib-python3==1.6.1
 plotly==5.17.0
 selenium==4.16.0
-webdriver-manager
-seleniumbase
