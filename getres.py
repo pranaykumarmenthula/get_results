@@ -388,20 +388,3 @@ if selected_opt == "Get Attendance" :
 
                         #except Exception as e:
                          #           st.error('Error)    
-
-
-ad_code = """
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1009909662863685"
-     crossorigin="anonymous"></script>
-<!-- getres -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1009909662863685"
-     data-ad-slot="9448856519"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-"""
-st.markdown(ad_code, unsafe_allow_html=True)
