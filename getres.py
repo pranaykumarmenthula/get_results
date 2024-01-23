@@ -306,7 +306,7 @@ if selected_opt == "GetRes Credentials" :
 if selected_opt == "Get Attendance" :
             st.title("Get Attendance")
             rollno = st.text_input("Enter Roll Number")
-            if st.button("Submit"):
+            #if st.button("Submit"):
                         #try:
                                    # wait_message = st.empty()
                                     #wait_message.text("Please wait...")
