@@ -1,5 +1,6 @@
 #required packages
-pandas==2.0.3
+pandas==1.3.0
+numpy==1.21.0
 openpyxl
 regex==2023.8.8
 streamlit-option-menu==0.3.6
